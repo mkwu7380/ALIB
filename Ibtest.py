@@ -5,12 +5,12 @@ from ib.opt import Connection, message
 
 def error_handler(msg):
     """Handles the capturing of error messages"""
-    print "Server Error: %s" % msg
+    print("Server Error: %s", msg)
 
 
 def reply_handler(msg):
     """Handles of server replies"""
-    print "Server Response: %s. %s" % (msg.typeName.msg)
+    print("Server Response: %s. %s", msg.typeName.msg)
 
 
 def create_contract(symbol, sec_type, exch, prim_exch, curr):
@@ -46,7 +46,7 @@ def create_order(order_type, quantity, action):
     return order
 
 
-if __name__ == "__main__":
+def main():
     # Connect to the Trader Workstation (TWS) running on the
     # usual port of 7496, with a clientId of 100
     # (The clientId is chosen by us and we will need
@@ -54,14 +54,6 @@ if __name__ == "__main__":
     # market data connection)
     tws_conn = Connection.create(port=7496, clientId=100)
     tws_conn.connect()
-
-    # Assign the error handling function defined above
-    # to the TWS connection
-    tws_conn.register(error_handler, "Error")
-
-    # Assign all of the server reply messages to the
-    # reply_handler function defined above
-    tws_conn.registerAll(reply_handler)
 
     # Create an order ID which is 'global' for this session. This
     # will need incrementing once new orders are submitted.
@@ -78,3 +70,6 @@ if __name__ == "__main__":
 
     # Disconnect from TWS
     tws_conn.disconnect()
+
+
+main()
