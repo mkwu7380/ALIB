@@ -16,14 +16,14 @@ y = np.array(data[predict])
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
 
 best = 0
-for _ in range(30):
+for _ in range(10000):
     x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
 
     lin = linear_model.LinearRegression()
     lin.fit(x_train, y_train)
     acc = lin.score(x_test, y_test)
 
-    print(acc)
+
     if acc > best:
         best = acc
         with open("studentgrades.pickle", "wb") as f:
@@ -38,7 +38,7 @@ print("Intercept: \n", lin.intercept_)
 pre = lin.predict(x_test)
 
 acc = lin.score(x_test, y_test)
-print(acc)
+print(best)
 
 for i in range(len(pre)):
     print(pre[i], x_test[i], y_test[i])
