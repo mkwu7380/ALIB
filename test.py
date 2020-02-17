@@ -18,3 +18,10 @@ lin.fit(x_train, y_train)
 acc = lin.score(x_test, y_test)
 
 print(acc)
+print("Coefficient: \n", lin.coef_)
+print("Intercept: \n", lin.intercept_)
+
+pre = lin.predict(x_test)
+
+for i in range(len(pre)):
+    print(pre[i], x_test[i], y_test[i])
