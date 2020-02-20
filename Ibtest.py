@@ -5,7 +5,7 @@ from ib.opt import Connection, message
 
 def error_handler(msg):
     """Handles the capturing of error messages"""
-    print("Server Error: %s", msg)
+    print("Server Error: %s", msg) import n
 
 
 def reply_handler(msg):
